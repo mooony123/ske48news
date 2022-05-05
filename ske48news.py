@@ -56,7 +56,7 @@ async def get_new_news_items():
     return new_news
 
 def news_item_to_str(item: dict) -> str:
-    return f'{item["cat"]} {item["date"]}\n{item["title"]} {item["url"]}'
+    return f'{item["cat"]} {item["date"]}\n{item["title"]} <{item["url"]}>'
 
 async def get_new_news_items_str():
     new_news = await get_new_news_items()
