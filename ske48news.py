@@ -62,6 +62,12 @@ async def get_new_news_items_str():
     new_news = await get_new_news_items()
     return [news_item_to_str(item) for item in new_news]
 
+async def init():
+    if os.path.exists('ske48news.json'):
+        last_news.extend(json_load())
+    else:
+        await get_new_news_items()
+
 async def main():
     last_news.extend(json_load())
     new_news = await get_new_news_items()
