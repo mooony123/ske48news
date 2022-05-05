@@ -52,6 +52,8 @@ async def get_new_news_items():
     curr_news = await get_news()
     new_news = [i for i in curr_news if i['url'] not in [o['url'] for o in last_news]]
     if len(new_news):
+        last_news.clear()
+        last_news.extend(curr_news)
         json_dump(curr_news)
     return new_news
 
